@@ -1,28 +1,25 @@
-Dev Data Prod_CP2
+Week-3, R markdown & plotly
 ========================================================
-author: 
-date: 
+author: Thimmaraju Rudrappa
+date: 30 Oct 2019
 autosize: true
 
-First Slide
-========================================================
 
-For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>.
-
-- Bullet 1
-- Bullet 2
-- Bullet 3
-
-Slide With Code
-========================================================
-
-```{r}
-summary(cars)
-```
 
 Slide With Plot
 ========================================================
 
-```{r, echo=FALSE}
-plot(cars)
+```{r,  echo = FALSE, Warnings = FALSE, Message = FALSE}
+library(plotly)
+set.seed(100)
+d <- diamonds[sample(nrow(diamonds), 1000), ]
+p=plot_ly(d, x = ~carat, y = ~price, color = ~carat,
+    size = ~carat, text = ~paste("Clarity: ", clarity))
+htmlwidgets::saveWidget(as.widget(p), file = "demo.html")
 ```
+
+<iframe src="demo.html" style="position:absolute;height:100%;width:100%"></iframe>
+
+========================================================
+
+# Thanks
